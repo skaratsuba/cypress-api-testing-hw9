@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jun 29 20:44:10 EEST 2024","Sat Jun 29 20:44:19 EEST 2024","8988","","Create space","","","","Create space with the same name for specific team id",""
+"passed","Sat Jun 29 20:44:19 EEST 2024","Sat Jun 29 20:44:21 EEST 2024","2202","","Create space","","","","Create space for specific team id without the required field ""name""",""
+"failed","Sat Jun 29 20:44:21 EEST 2024","Sat Jun 29 20:44:23 EEST 2024","2485","","Create space","","","","Create list of spaces for not valid team id",""
+"passed","Sat Jun 29 20:44:03 EEST 2024","Sat Jun 29 20:44:10 EEST 2024","7041","","Create space","","","","Create space for specific team id",""
