@@ -4,7 +4,8 @@ orbs:
 
 jobs:
   build_and_test:
-    docker: circleci/node
+    docker: 
+      - circleci/node
     steps:
       - checkout
       - node/install-packages:
