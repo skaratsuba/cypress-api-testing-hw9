@@ -1,28 +1,36 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.2
-
-executors:
-  my-node-executor:
-    docker:
-      - image: circleci/node:14
 
 jobs:
-  build_and_test:
-    executor: my-node-executor
+  node-js-job:
+    docker:
+      - image: timbru31/java-node:latest
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
-          command: npm install
+          name: Get access
+          command: chmod 777  /root
       - run:
-          command: npx cypress run --env allure=true
-      - persist_to_workspace:
-          root: ~/project
-          paths: .
-
+          name: Update dependencies
+          command: apt update && apt upgrade -y
+      - run:
+          name: Install libs
+          command: apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb -y
+      - run:
+          name: Update cypress
+          command: npm install cypress --save-dev
+      - run:
+          name: install all
+          command: && npm i
+      - run:
+          name: run tests
+          command: npm run cy:run || true
+      - run:
+          name: generate report
+          command: npm run allure:report
+      - store_artifacts:
+          path: allure-report
+       
 workflows:
-  test_my_app:
+  build-and-test:
     jobs:
-      - build_and_test
+      - node-js-job
