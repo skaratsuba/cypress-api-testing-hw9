@@ -20,7 +20,7 @@ jobs:
           command: npm run cypress:runner
       - persist_to_workspace:
           root: ~/project
-          paths:.
+          paths: .
 
 workflows:
   test_my_app:
