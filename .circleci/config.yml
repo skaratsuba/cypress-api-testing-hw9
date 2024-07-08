@@ -20,7 +20,7 @@ jobs:
           command: npm install cypress --save-dev
       - run:
           name: install all
-          command: && npm i
+          command: npm i
       - run:
           name: run tests
           command: npm run cy:run || true
