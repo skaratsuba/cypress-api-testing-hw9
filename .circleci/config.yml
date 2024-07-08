@@ -17,7 +17,7 @@ jobs:
       - run:
           command: npm install
       - run:
-          command: npm run cypress:runner
+          command: npx cypress run --env allure=true
       - persist_to_workspace:
           root: ~/project
           paths: .
