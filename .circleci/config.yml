@@ -2,13 +2,14 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
+executors:
+  my-node-executor:
+    docker:
+      - image: circleci/node:14
+
 jobs:
   build_and_test:
-    executor:
-      name: my-node-executor
-      docker:
-        - image: circleci/node:14
-
+    executor: my-node-executor
     steps:
       - checkout
       - node/install-packages:
@@ -19,7 +20,7 @@ jobs:
           command: npm run cypress:runner
       - persist_to_workspace:
           root: ~/project
-          paths: .
+          paths:.
 
 workflows:
   test_my_app:
